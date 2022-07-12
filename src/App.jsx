@@ -1,7 +1,9 @@
+import Home from "./pages/Home";
+
 function App() {
   return (
     <div className="App">
-      <h1>E-Shop</h1>
+      <Home></Home>
     </div>
   );
 }
