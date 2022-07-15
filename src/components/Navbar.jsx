@@ -21,7 +21,7 @@ const Left = styled.div`
 `;
 
 const Language = styled.span`
-  font-size:14px;
+  font-size:16px;
   cursor: pointer
 `;
 
@@ -43,7 +43,9 @@ const Center = styled.div`
 `;
 
 const Logo = styled.div`
-  font-weight: bold
+  font-weight: bold;
+  font-size: 40px;
+  font-family: 'Dancing Script', cursive;
 `;
 
 const Right = styled.div`
@@ -54,7 +56,7 @@ const Right = styled.div`
 `;
 
 const MenuItem = styled.div`
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
   margin-left: 25px
 `;

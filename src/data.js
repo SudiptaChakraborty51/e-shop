@@ -59,11 +59,11 @@ export const sliderItems = [
     },
     {
       id:4,
-      img:"https://images.ctfassets.net/5gvckmvm9289/3BlDoZxSSjqAvv1jBJP7TH/65f9a95484117730ace42abf64e89572/Noissue-x-Creatsy-Tote-Bag-Mockup-Bundle-_4_-2.png",
+      img:"https://freepngimg.com/thumb/jacket/16-jacket-png-image.png",
     },
     {
       id:5,
-      img:"https://d3o2e4jr3mxnm3.cloudfront.net/Rocket-Vintage-Chill-Cap_66374_1_lg.png",
+      img:"https://freepngimg.com/thumb/dress%20shirt/4-black-dress-shirt-png-image.png",
     },
     {
       id:6,
@@ -71,10 +71,10 @@ export const sliderItems = [
     },
     {
       id: 7,
-      img: "https://media.istockphoto.com/photos/flowery-evase-bateau-yellow-dress-picture-id178851955?k=20&m=178851955&s=612x612&w=0&h=PbB6SOjyZNIzTYr3qC7IY-qn1tsWWHyojRfs4XB8WhM=",
+      img: "https://freepngimg.com/thumb/dress/7-2-dress-transparent.png",
     },
     {
       id: 8,
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStN9VfFmjWI-tEKJpJRrf30XG-qcEC343x_045HwuXa1Jij8eUfHz3x2w4fKPavSRH944&usqp=CAU",
+      img: "https://freepngimg.com/thumb/dress/33183-2-floral-dress-transparent-image.png",
     }
   ]
