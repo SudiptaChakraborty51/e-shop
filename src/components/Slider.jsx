@@ -2,7 +2,7 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from '@material-ui/icons';
 import React from 'react'
 import { useState } from 'react';
 import styled from 'styled-components'
-import {sliderItems} from '../data'
+import {sliderItems} from '../data.js'
 
 const Container =styled.div`
     width: 100%;
@@ -15,7 +15,7 @@ const Container =styled.div`
 const Arrow = styled.div`
     width: 50px;
     height: 50px;
-    background-color: #ccfbf1;
+    background-color: #fff7f7;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -34,14 +34,16 @@ const Arrow = styled.div`
 const Wrapper = styled.div`
     height: 100%;
     display: flex;
-    transform: translateX(0vw)
+    transition: all 1.5s ease;
+    transform: translateX(${props=>props.slideIndex * -100}vw);
 `;
 
 const Slide = styled.div`
     width: 100vw;
     height: 100vh;
     display: flex;
-    align-items: center
+    align-items: center;
+    background-color: #${(props)=>props.bg}
 `;
 
 const Imgcontainer = styled.div`
@@ -51,16 +53,15 @@ const Imgcontainer = styled.div`
 
 const Image = styled.img`
     height: 100%;
-    padding: 60px;
 `;
 
 const InfoContainer = styled.div`
     flex: 1;  
-    padding: 10px;  
+    padding: 50px;  
 `;
 
 const Title = styled.h1`
-    font-size: 50px;
+    font-size: 70px;
 `;
 
 const Desc = styled.p`
@@ -73,21 +74,25 @@ const Desc = styled.p`
 const Button = styled.button`
     padding: 10px;
     font-size: 20px;
-    background-color: #ccfbf1;
     cursor: pointer;
+    background-color: transparent;
 `;
 
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const clickHandler = (direction)=> {
-
+    if(direction==="left"){
+        setSlideIndex(slideIndex > 0 ? slideIndex-1 : 2) 
+    } else {
+        setSlideIndex(slideIndex < 2 ? slideIndex+1 : 0)
+    }
   }
   return (
     <Container>
         <Arrow direction="left" onClick={()=>clickHandler("left")}>
             <ArrowLeftOutlined />
         </Arrow>
-        <Wrapper>
+        <Wrapper slideIndex={slideIndex}>
             {sliderItems.map((item)=>(
                 <Slide bg={item.bg}>
                     <Imgcontainer>
