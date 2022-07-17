@@ -2,6 +2,7 @@
 // import ProductList from "./pages/ProductList";
 // import Product from "./pages/Product";
 import Register from "./pages/Register";
+// import Login from "./pages/Login";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       {/* <ProductList /> */}
       {/* <Product /> */}
       <Register />
+      {/* <Login /> */}
     </div>
   );
 }

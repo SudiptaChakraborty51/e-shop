@@ -19,7 +19,7 @@ const Container = styled.div`
 const Wrapper = styled.div`
   width: 40%;
   padding: 20px;
-  background-color: #cbd5e1;
+  background-color: #f0fdfa;
   border-radius: 5px;
 `;
 
