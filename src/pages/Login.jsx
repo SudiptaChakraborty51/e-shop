@@ -38,7 +38,7 @@ const Form = styled.form`
 
 const Input= styled.input`
   flex: 1;
-  min-width: 40%;
+  min-width: 80%;
   margin: 10px 0px;
   padding: 10px;
   border: 2px solid teal;
@@ -49,7 +49,8 @@ const Input= styled.input`
 const Button = styled.button`
   width: 40%;
   border: 2px solid teal;
-  padding: 15px 20px;
+  margin: 10px 0px;
+  padding: 10px;
   background-color: transparent;
   cursor: pointer;
   font-weight: 700;

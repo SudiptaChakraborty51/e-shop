@@ -1,9 +1,11 @@
 import { Facebook, Instagram, MailOutline, Phone, Pinterest, Room, Twitter } from '@material-ui/icons';
 import React from 'react'
 import styled from 'styled-components'
+import { mobile } from "../responsive";
 
 const Container = styled.div`
     display: flex;
+    ${mobile({ flexDirection: "column" })}
 `;
 
 const Left = styled.div`
@@ -14,7 +16,8 @@ const Left = styled.div`
 `;
 
 const Logo = styled.h1`
-
+    font-family: 'Dancing Script', cursive;
+    ${mobile({ textAlign: "center" })}
 `;
 
 const Desc = styled.p`
@@ -41,6 +44,7 @@ const SocialIcon = styled.div`
 const Center = styled.div`
     flex: 1;
     padding: 20px;
+    
 `;
 
 const Title = styled.h3`
