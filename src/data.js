@@ -31,16 +31,19 @@ export const sliderItems = [
       id: 1,
       img: "https://images.pexels.com/photos/5885979/pexels-photo-5885979.jpeg",
       title: "SHIRT STYLE!",
+      category: "woman"
     },
     {
       id: 2,
       img: "https://images.pexels.com/photos/6630811/pexels-photo-6630811.jpeg",
       title: "LOUNGEWEAR LOVE",
+      category: "loungewear"
     },
     {
       id: 3,
       img: "https://images.pexels.com/photos/2068349/pexels-photo-2068349.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       title: "JEANS FIT",
+      category: "jeans"
     },
   ];
 
