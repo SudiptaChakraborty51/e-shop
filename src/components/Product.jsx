@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react';
 import styled from 'styled-components'
-import {popularProducts} from '../data'
 import ProductItem from './ProductItem';
 import axios from 'axios';
 
@@ -30,7 +29,7 @@ const Product = ({category, filters, sort}) => {
       };
     }
     getProducts();
-  },[category]);
+  },[category]);//dependency
 
   useEffect(() => {
     category &&
@@ -62,8 +61,10 @@ const Product = ({category, filters, sort}) => {
   return (
     <Container>
         {category
-        ? filteredProducts.map((item) => <ProductItem item={item} key={item.id} />)
-        : popularProducts.map((item) => <ProductItem item={item} key={item.id} />)}
+        ? filteredProducts.map((item) => <ProductItem key={item.id} item={item} />)
+        : products
+        .slice(0,8)
+        .map((item) => <ProductItem key={item.id} item={item} />)}
     </Container>
   )
 }

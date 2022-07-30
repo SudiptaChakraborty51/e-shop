@@ -5,6 +5,7 @@ import Announcement from '../components/Announcement'
 import Footer from '../components/Footer'
 import { Add, Remove } from '@material-ui/icons';
 import { mobile } from "../responsive";
+import { useSelector } from 'react-redux';
 
 const Container = styled.div`
 
@@ -168,6 +169,7 @@ const Button = styled.button`
 `;
 
 const Cart = () => {
+  const cart = useSelector(state=>state.cart);
   return (
     <Container>
         <Announcement />
@@ -184,58 +186,33 @@ const Cart = () => {
           </Top>
           <Bottom>
             <Info>
-              <Product>
+              {cart.products.map(product=>(
+                <Product>
                 <ProductDetail>
-                  <Image src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTY9bvQhGSFFaEhFNuQ3qaS0moV8PCNsSnApXy5jCoCkNqG59WZg9z6EB_HtiPad3cxjKSmcVK8-9SWOq4rthBMH2IHi80mDxvBs19pB0RLApAWKlY1jlfX4w&usqp=CAE" />
+                  <Image src={product.img} />
                   <Details>
                     <ProductName>
-                      <b>Product:</b> TOMMY HILFIGER Men Solid Casual Black Shirt
+                      <b>Product:</b> {product.title}
                     </ProductName>
                     <ProductId>
-                      <b>ID:</b> 93813718293
+                      <b>ID:</b> {product._id}
                     </ProductId>
-                    <ProductColor color="black" />
+                    <ProductColor color={product.color} />
                     <ProductSize>
-                      <b>Size:</b> 38
+                      <b>Size:</b> {product.size}
                     </ProductSize>
                   </Details>
                 </ProductDetail>
                 <PriceDetail>
                   <ProductAmountContainer>
                     <Add />
-                    <ProductAmount>1</ProductAmount>
+                    <ProductAmount>{product.quantity}</ProductAmount>
                     <Remove />
                   </ProductAmountContainer>
-                  <ProductPrice>RS ₹3999</ProductPrice>
+                  <ProductPrice>RS. ₹{product.price*product.quantity}</ProductPrice>
                 </PriceDetail>
               </Product>
-              <Hr />
-              <Product>
-                <ProductDetail>
-                  <Image src="https://assets.ajio.com/medias/sys_master/root/20210403/trmb/60689f2a7cdb8c1f14790dbc/-473Wx593H-461641863-pink-MODEL.jpg" />
-                  <Details>
-                    <ProductName>
-                      <b>Product:</b> DILLINGER Typography Print T-shirt
-                    </ProductName>
-                    <ProductId>
-                      <b>ID:</b> 93813718293
-                    </ProductId>
-                    <ProductColor color="#9d174d" />
-                    <ProductSize>
-                      <b>Size:</b> M
-                    </ProductSize>
-                  </Details>
-                </ProductDetail>
-                <PriceDetail>
-                  <ProductAmountContainer>
-                    <Add />
-                    <ProductAmount>1</ProductAmount>
-                    <Remove />
-                  </ProductAmountContainer>
-                  <ProductPrice>RS. ₹528</ProductPrice>
-                </PriceDetail>
-              </Product>
-              <Hr />
+              ))}
             </Info>
             <Summary>
               <SummaryTitle>ORDER SUMMARY</SummaryTitle>

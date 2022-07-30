@@ -6,6 +6,12 @@ import Newsletter from '../components/Newsletter'
 import Footer from '../components/Footer'
 import { Add, Remove } from '@material-ui/icons'
 import { mobile } from "../responsive";
+import { useLocation } from 'react-router-dom'
+import { useState } from 'react'
+import { useEffect } from 'react'
+import { publicRequest } from '../requestMethods'
+import { addProduct } from '../redux/cartRedux'
+import {useDispatch} from "react-redux"
 
 const Container = styled.div`
 
@@ -122,43 +128,76 @@ const Button = styled.button`
 `;
 
 const Product = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
+  const [color, setColor] = useState("");
+  const [size, setSize] = useState("");
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    const getProduct = async ()=>{
+        try{
+            const res = await publicRequest.get("/products/find/"+id);
+            setProduct(res.data);
+        }catch{
+
+        }
+    };
+    getProduct();
+  },[id]);
+
+  const handleQuantity = (type) =>{
+    if(type === "dec"){
+        quantity > 1 && setQuantity(quantity-1);
+    }else {
+        setQuantity(quantity+1);
+    }
+  };
+
+  const handleClick = ()=>{
+    //update cart
+    dispatch(
+        addProduct({...product, quantity, color, size})
+    )
+  };
+
   return (
     <Container>
         <Announcement />
         <Navbar />
         <Wrapper>
             <ImageContainer>
-                <Image src="https://assets.ajio.com/medias/sys_master/root/20210403/trmb/60689f2a7cdb8c1f14790dbc/-473Wx593H-461641863-pink-MODEL.jpg"/>
+                <Image src={product.img}/>
             </ImageContainer>
             <InfoContainer>
-                <Title>DILLINGER Typography Print T-shirt</Title>
-                <Desc>Pink, Typography Print T-shirt Tshirts perfect for Casual occasion. Suggested care is to Machine wash.</Desc>
-                <Price>RS. ₹528</Price>
+                <Title>{product.title}</Title>
+                <Desc>{product.desc}</Desc>
+                <Price>RS. ₹{product.price}</Price>
                 <FilterContainer>
                     <Filter>
                         <FilterTitle>Color</FilterTitle>
-                        <FilterColor color="black" />
-                        <FilterColor color="#9d174d" />
-                        <FilterColor color="blue" />
+                        {product.color?.map((c)=>(
+                            <FilterColor color={c} key={c} onClick={()=>setColor(c)}/>
+                        ))}
                     </Filter>
                     <Filter>
                         <FilterTitle>Size</FilterTitle>
-                        <FilterSize>
-                            <FilterSizeOption>XS</FilterSizeOption>
-                            <FilterSizeOption>S</FilterSizeOption>
-                            <FilterSizeOption>M</FilterSizeOption>
-                            <FilterSizeOption>L</FilterSizeOption>
-                            <FilterSizeOption>XL</FilterSizeOption>
+                        <FilterSize  onChange={(e)=>setSize(e.target.value)}>
+                            {product.size?.map((s)=>(
+                                <FilterSizeOption key={s}>{s}</FilterSizeOption>
+                            ))}
                         </FilterSize>
                     </Filter>
                 </FilterContainer>
                 <AddContainer>
                     <AmountContainer>
-                        <Remove />
-                        <Amount>1</Amount>
-                        <Add />
+                        <Remove onClick={()=>handleQuantity("dec")}/>
+                        <Amount>{quantity}</Amount>
+                        <Add onClick={()=>handleQuantity("inc")}/>
                     </AmountContainer>
-                    <Button>ADD TO CART</Button>
+                    <Button onClick={handleClick}>ADD TO CART</Button>
                 </AddContainer>
             </InfoContainer>
         </Wrapper>
