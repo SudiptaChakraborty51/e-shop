@@ -157,10 +157,11 @@ const Product = () => {
   };
 
   const handleClick = ()=>{
+    console.log(product);
     //update cart
     dispatch(
-        addProduct({...product, quantity, color, size})
-    )
+        addProduct({ ...product, quantity, color, size })
+    );
   };
 
   return (
@@ -204,7 +205,7 @@ const Product = () => {
         <Newsletter />
         <Footer />
     </Container>
-  )
-}
+  );
+};
 
-export default Product
+export default Product;
